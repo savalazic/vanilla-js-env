@@ -11,6 +11,7 @@
     "open:src": "babel-node buildScripts/srcServer.js",
     "lint": "esw webpack.config.* src buildScripts --color",
     "lint:watch": "npm run lint -- --watch",
+    "test": "NODE_ENV=test jest --watch",
     "flow": "flow",
     "security-check": "nsp check",
     "localtunnel": "lt --port 3000",
@@ -19,10 +20,18 @@
   "dependencies": {
     "whatwg-fetch": "1.0.0"
   },
+  "jest": {
+    "verbose": true,
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ]
+  },
   "devDependencies": {
     "babel-cli": "6.16.0",
     "babel-core": "6.17.0",
     "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.3",
     "babel-loader": "6.2.5",
     "babel-preset-latest": "6.16.0",
     "babel-register": "6.16.3",
@@ -43,6 +52,7 @@
     "flow-bin": "^0.69.0",
     "flow-remove-types": "^1.2.3",
     "html-webpack-plugin": "2.22.0",
+    "jest": "^22.4.3",
     "jsdom": "9.8.0",
     "json-schema-faker": "0.3.6",
     "json-server": "0.8.22",
