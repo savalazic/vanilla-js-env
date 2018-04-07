@@ -11,7 +11,7 @@
     "open:src": "babel-node buildScripts/srcServer.js",
     "lint": "esw webpack.config.* src buildScripts --color",
     "lint:watch": "npm run lint -- --watch",
-    "test": "NODE_ENV=test jest --watch",
+    "test": "NODE_ENV=test jest --watchAll",
     "flow": "flow",
     "security-check": "nsp check",
     "localtunnel": "lt --port 3000",
