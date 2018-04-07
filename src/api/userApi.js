@@ -4,12 +4,12 @@ import getBaseUrl from './baseUrl';
 
 const baseUrl = getBaseUrl();
 
-export function getUsers() {
-  return get('users');
+function onSuccess(res) {
+  return res.json();
 }
 
-export function deleteUser(id: string) {
-  return remove(`users/${id}`);
+function onError(err: string) {
+  console.log(err);
 }
 
 function get(url: string): Promise<*> {
@@ -22,14 +22,13 @@ function remove(url: string): Promise<*> {
   const request = new Request(baseUrl + url, {
     method: 'DELETE',
   });
-
   return fetch(request).then(onSuccess, onError);
 }
 
-function onSuccess(res) {
-  return res.json();
+export function getUsers() {
+  return get('users');
 }
 
-function onError(err: string) {
-  console.log(err);
+export function deleteUser(id: string) {
+  return remove(`users/${id}`);
 }

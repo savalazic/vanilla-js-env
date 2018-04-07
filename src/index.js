@@ -10,8 +10,8 @@ type User = {
 };
 
 getUsers().then(data => {
-  let usersBody = (data || []).reduce((body, user: User) => {
-    body += `
+  const usersBody = (data || []).reduce((body, user: User) => {
+    const userBody = `${body}
       <tr>
         <td><a href="#" data-id="${user.id}" class="deleteUser">Delete</a></td>
         <td>${user.id}</td>
@@ -19,22 +19,22 @@ getUsers().then(data => {
         <td>${user.lastName}</td>
         <td>${user.email}</td>
       </tr>
-  `;
+    `;
 
-    return body;
+    return userBody;
   }, '');
 
   global.document.getElementById('users').innerHTML = usersBody;
 
-  const deleteLinks = global.document.getElementsByClassName('deleteUser');
+  const deleteLinks = global.document.querySelectorAll('.deleteUser');
 
-  Array.from(deleteLinks, link => {
-    link.onclick = event => {
+  [...deleteLinks].forEach(link => {
+    link.addEventListener('click', event => {
       event.preventDefault();
       const element = event.target;
       deleteUser(element.attributes['data-id'].value);
       const row = element.parentNode.parentNode;
       row.parentNode.removeChild(row);
-    };
+    });
   });
 });

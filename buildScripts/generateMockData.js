@@ -1,7 +1,7 @@
 import jsf from 'json-schema-faker';
 import fs from 'fs';
 import chalk from 'chalk';
-import { schema } from './mockDataSchema';
+import schema from './mockDataSchema';
 
 const json = JSON.stringify(jsf(schema));
 

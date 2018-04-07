@@ -1,4 +1,4 @@
-export const schema = {
+export default {
   type: 'object',
   properties: {
     users: {
