@@ -23,7 +23,7 @@
     "jest": true
   },
   "rules": {
-    "no-console": "warn",
+    "no-console": "off",
     "prettier/prettier": "error"
   }
 }

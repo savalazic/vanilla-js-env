@@ -1,13 +1,28 @@
 // @flow
-import numeral from 'numeral';
-
+import { getUsers } from './api/userApi';
 import './index.css';
 
-const foo = (x: number, y: number): number => x + y;
+type User = {
+  id: string,
+  firstName: string,
+  lastName: string,
+  email: string,
+};
 
-const bar = foo(1, 5);
-console.log(bar);
+getUsers().then(data => {
+  let usersBody = (data || []).reduce((body, user: User) => {
+    body += `
+      <tr>
+        <td><a href="#" data-id="${user.id}" class="deleteUser">Delete</a></td>
+        <td>${user.id}</td>
+        <td>${user.firstName}</td>
+        <td>${user.lastName}</td>
+        <td>${user.email}</td>
+      </tr>
+  `;
 
-const val = numeral(1000).format('$0,0.00');
-// debugger;
-console.log(val);
+    return body;
+  }, '');
+
+  global.document.getElementById('users').innerHTML = usersBody;
+});
