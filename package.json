@@ -17,15 +17,15 @@
     "localtunnel": "lt --port 3000",
     "share": "npm-run-all --parallel open:src localtunnel"
   },
-  "dependencies": {
-    "whatwg-fetch": "1.0.0"
-  },
   "jest": {
     "verbose": true,
     "moduleDirectories": [
       "node_modules",
       "src"
     ]
+  },
+  "dependencies": {
+    "whatwg-fetch": "1.0.0"
   },
   "devDependencies": {
     "babel-cli": "6.16.0",
