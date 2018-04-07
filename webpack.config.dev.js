@@ -1,6 +1,7 @@
-import path from 'path';
+var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-export default {
+module.exports = {
   debug: true,
   devtool: 'inline-source-map',
   noInfo: false,
@@ -11,14 +12,16 @@ export default {
     publicPath: '/',
     filename: 'bundle.js',
   },
-  devServer: {
-    contentBase: path.resolve(__dirname, 'src'),
-  },
-  plugins: [],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src/index.html'),
+      inject: true,
+    }),
+  ],
   module: {
     preLoaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.js?$/,
         loader: 'remove-flow-types',
         include: path.join(__dirname, 'src'),
       },
